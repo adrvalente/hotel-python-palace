@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Python Palace | Portfolio Project</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Hotel Python Palace is a hotel management system built with Python, Flask, SQLite, Java, HTML, CSS and JavaScript.">
+    <meta name="author" content="Adriano Valente">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Hotel Python Palace">
+    <meta property="og:description" content="A hotel management system with Flask web app, SQLite database and Java console tools.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="screenshots/frontend/02_admin_dashboard.png">
+
+    <!-- Favicon fallback -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏨</text></svg>">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- =========================
+         HEADER / HERO SECTION
+    ========================== -->
+    <header class="hero" id="home">
+        <nav class="navbar">
+            <a href="#home" class="logo">🏨 Hotel Python Palace</a>
+
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#features">Features</a>
+                <a href="#screenshots">Screenshots</a>
+                <a href="#roadmap">Roadmap</a>
+            </div>
+        </nav>
+
+        <div class="hero-content reveal">
+            <span class="project-badge">Portfolio Project</span>
+
+            <h1>Hotel Python Palace</h1>
+
+            <p class="hero-subtitle">
+                A modern hotel management system built with Python, Flask, SQLite and Java.
+                Includes reservations, room management, dashboards, invoices and a Java console administration tool.
+            </p>
+
+            <div class="badge-list" aria-label="Technologies used">
+                <span>Python</span>
+                <span>Flask</span>
+                <span>SQLite</span>
+                <span>Java</span>
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="https://hotel-python-palace.onrender.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    🚀 Launch Live Demo
+                </a>
+
+                <a href="https://github.com/adrvalente/hotel-python-palace" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                    GitHub Repository
+                </a>
+
+                <a href="https://github.com/adrvalente/hotel-python-palace#readme" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                    Documentation
+                </a>
+
+                <a href="https://adrianovalente.pt" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                    Portfolio
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- =========================
+             ABOUT SECTION
+        ========================== -->
+        <section class="section reveal" id="about">
+            <div class="section-header">
+                <span class="section-tag">About</span>
+                <h2>Project Overview</h2>
+            </div>
+
+            <div class="about-layout">
+                <div class="glass-card large-card">
+                    <h3>🏨 What is Hotel Python Palace?</h3>
+                    <p>
+                        Hotel Python Palace is a full-stack hotel management project created to simulate
+                        the daily operations of a hotel. The system includes a Flask web application,
+                        a SQLite database and a Java console tool for administrative tasks.
+                    </p>
+                    <p>
+                        The goal of this project is to demonstrate practical skills in backend development,
+                        database design, CRUD operations, authentication, responsive web design and software documentation.
+                    </p>
+                </div>
+
+                <div class="preview-card">
+                    <img src="screenshots/frontend/02_admin_dashboard.png" alt="Hotel Python Palace dashboard preview">
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             FEATURES SECTION
+        ========================== -->
+        <section class="section reveal" id="features">
+            <div class="section-header">
+                <span class="section-tag">Features</span>
+                <h2>Main Features</h2>
+            </div>
+
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <span class="feature-icon">🔐</span>
+                    <h3>Authentication</h3>
+                    <p>Login system with protected pages, session handling and administrator access.</p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon">📅</span>
+                    <h3>Reservations</h3>
+                    <p>Create, view and manage hotel reservations with date validation and availability control.</p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon">🛏️</span>
+                    <h3>Room Management</h3>
+                    <p>Manage room types, availability, pricing and occupancy information.</p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon">👥</span>
+                    <h3>Guest Management</h3>
+                    <p>Register guests, manage customer information and review reservation history.</p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <h3>Dashboard</h3>
+                    <p>Visual administration area with hotel data, reservations and operational overview.</p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon">☕</span>
+                    <h3>Java Console</h3>
+                    <p>Console-based administration tool for rooms, guests, calendar, import and export.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- =========================
+             TECHNOLOGIES SECTION
+        ========================== -->
+        <section class="section reveal" id="technologies">
+            <div class="section-header">
+                <span class="section-tag">Stack</span>
+                <h2>Technologies Used</h2>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-item">🐍 Python</div>
+                <div class="tech-item">⚙️ Flask</div>
+                <div class="tech-item">🗄️ SQLite</div>
+                <div class="tech-item">☕ Java</div>
+                <div class="tech-item">🌐 HTML5</div>
+                <div class="tech-item">🎨 CSS3</div>
+                <div class="tech-item">✨ JavaScript</div>
+                <div class="tech-item">🧩 Jinja2</div>
+                <div class="tech-item">🔧 Git</div>
+                <div class="tech-item">🚀 GitHub Pages</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             ARCHITECTURE SECTION
+        ========================== -->
+        <section class="section reveal" id="architecture">
+            <div class="section-header">
+                <span class="section-tag">Architecture</span>
+                <h2>System Architecture</h2>
+            </div>
+
+            <div class="architecture-grid">
+                <div class="architecture-box">
+                    <h3>🌐 Flask Web App</h3>
+                    <p>Handles routes, templates, authentication, dashboards, rooms, reservations and invoices.</p>
+                </div>
+
+                <div class="architecture-arrow">→</div>
+
+                <div class="architecture-box">
+                    <h3>🗄️ SQLite Database</h3>
+                    <p>Stores hotels, guests, rooms, reservations, users and operational data.</p>
+                </div>
+
+                <div class="architecture-arrow">←</div>
+
+                <div class="architecture-box">
+                    <h3>☕ Java Console</h3>
+                    <p>Provides an additional administrative interface for import, export and data management.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             SCREENSHOTS SECTION
+        ========================== -->
+        <section class="section reveal" id="screenshots">
+            <div class="section-header">
+                <span class="section-tag">Gallery</span>
+                <h2>Screenshots</h2>
+            </div>
+
+            <h3 class="gallery-title">🌐 Front-end</h3>
+            <div class="gallery" data-gallery="frontend">
+                <img src="screenshots/frontend/01_welcome_page.png" alt="Welcome page" class="gallery-img">
+                <img src="screenshots/frontend/02_admin_dashboard.png" alt="Admin dashboard" class="gallery-img">
+                <img src="screenshots/frontend/03_admin_dashboard2.png" alt="Dashboard overview" class="gallery-img">
+                <img src="screenshots/frontend/04_admin_dashboard3.png" alt="Administration interface" class="gallery-img">
+                <img src="screenshots/frontend/05_admin_dashboard4.png" alt="Additional dashboard features" class="gallery-img">
+                <img src="screenshots/frontend/06_user_login.png" alt="User login" class="gallery-img">
+                <img src="screenshots/frontend/07_user_quartos_view.png" alt="Room catalogue" class="gallery-img">
+                <img src="screenshots/frontend/08_user_criar_reserva.png" alt="Create reservation" class="gallery-img">
+            </div>
+
+            <h3 class="gallery-title">☕ Java Console</h3>
+            <div class="gallery" data-gallery="java-console">
+                <img src="screenshots/java-console/01_java_console.png" alt="Java console main menu" class="gallery-img">
+                <img src="screenshots/java-console/02_console_quartos.png" alt="Console room management" class="gallery-img">
+                <img src="screenshots/java-console/03_console_clientes.png" alt="Console guest management" class="gallery-img">
+                <img src="screenshots/java-console/04_console_calendario.png" alt="Console reservation calendar" class="gallery-img">
+                <img src="screenshots/java-console/05_console_import.png" alt="Console import" class="gallery-img">
+                <img src="screenshots/java-console/06_console_export.png" alt="Console export" class="gallery-img">
+            </div>
+        </section>
+
+        <!-- =========================
+             ROADMAP SECTION
+        ========================== -->
+        <section class="section reveal" id="roadmap">
+            <div class="section-header">
+                <span class="section-tag">Roadmap</span>
+                <h2>Future Improvements</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div>
+                        <h3>REST API</h3>
+                        <p>Add API endpoints for reservations, guests, rooms and invoices.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div>
+                        <h3>Docker Deployment</h3>
+                        <p>Create Docker configuration for easier deployment and reproducible environments.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div>
+                        <h3>PDF Invoices</h3>
+                        <p>Generate downloadable PDF invoices for completed reservations.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div>
+                        <h3>PostgreSQL Support</h3>
+                        <p>Prepare the project for production databases and cloud hosting.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="footer">
+        <p>Developed by <strong>Adriano Valente</strong></p>
+        <div class="footer-links">
+            <a href="https://github.com/adrvalente" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://adrianovalente.pt" target="_blank" rel="noopener noreferrer">Portfolio</a>
+            <a href="https://www.linkedin.com/in/adrianovalente/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/adrvalente/hotel-python-palace/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a>
+        </div>
+    </footer>
+
+    <!-- =========================
+         LIGHTBOX MODAL
+    ========================== -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close image">×</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">‹</button>
+        <img src="" alt="" id="lightboxImage">
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">›</button>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+
+    <!-- =========================
+         JAVASCRIPT
+         Kept inside index.html so GitHub Pages only needs
+         index.html + css/style.css.
+    ========================== -->
+    <script>
+        // Smooth reveal animation when sections enter the viewport
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        revealElements.forEach(element => observer.observe(element));
+
+        // Lightbox gallery logic
+        const galleryImages = Array.from(document.querySelectorAll('.gallery-img'));
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const closeButton = document.getElementById('lightboxClose');
+        const prevButton = document.getElementById('lightboxPrev');
+        const nextButton = document.getElementById('lightboxNext');
+
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightbox();
+            lightbox.classList.add('active');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('no-scroll');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('no-scroll');
+        }
+
+        function updateLightbox() {
+            const image = galleryImages[currentIndex];
+            lightboxImage.src = image.src;
+            lightboxImage.alt = image.alt;
+            lightboxCaption.textContent = image.alt;
+        }
+
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % galleryImages.length;
+            updateLightbox();
+        }
+
+        function showPreviousImage() {
+            currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateLightbox();
+        }
+
+        galleryImages.forEach((image, index) => {
+            image.addEventListener('click', () => openLightbox(index));
+        });
+
+        closeButton.addEventListener('click', closeLightbox);
+        nextButton.addEventListener('click', showNextImage);
+        prevButton.addEventListener('click', showPreviousImage);
+
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (!lightbox.classList.contains('active')) return;
+
+            if (event.key === 'Escape') closeLightbox();
+            if (event.key === 'ArrowRight') showNextImage();
+            if (event.key === 'ArrowLeft') showPreviousImage();
+        });
+    </script>
+
+</body>
+</html>

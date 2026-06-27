@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calendário de Reservas</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+        
+        .topo {
+            background: #020617;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .topo h1 {
+            margin: 0;
+        }
+        
+        .topo a {
+            color: white;
+            text-decoration: none;
+            background: #2563eb;
+            padding: 10px 16px;
+            border-radius: 8px;
+            margin-left: 10px;
+        }
+        
+        .container {
+            padding: 25px;
+        }
+        
+        #calendar {
+            background: white;
+            color: #111827;
+            padding: 20px;
+            border-radius: 14px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .modal-content {
+            background: white;
+            color: #111827;
+            width: 420px;
+            padding: 25px;
+            border-radius: 14px;
+        }
+        
+        .modal-content h2 {
+            margin-top: 0;
+        }
+        
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 12px;
+        }
+        
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+        }
+        
+        .botoes {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        button {
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .btn-guardar {
+            background: #16a34a;
+            color: white;
+        }
+        
+        .btn-cancelar {
+            background: #dc2626;
+            color: white;
+        }
+        
+        .legenda {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topo">
+        <h1>Calendário de Reservas</h1>
+
+        <div>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('reservas') }}">Reservas</a>
+            <a href="{{ url_for('logout') }}">Sair</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="calendar"></div>
+
+        <div class="legenda">
+            Dias com cor = quarto ocupado / reservado. Dias sem reserva = livres. {% if is_admin %} Clica num dia livre para criar uma nova reserva. {% endif %}
+        </div>
+    </div>
+
+    {% if is_admin %}
+    <div class="modal" id="modalReserva">
+        <div class="modal-content">
+            <h2>Nova Reserva</h2>
+
+            <label>Cliente</label>
+            <select id="cliente_id">
+                {% for cliente in clientes %}
+                <option value="{{ cliente.id }}">{{ cliente.nome }} - {{ cliente.nif }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Quarto</label>
+            <select id="quarto_id">
+                {% for quarto in quartos %}
+                <option value="{{ quarto.id }}">
+                    Quarto {{ quarto.numero }} - {{ quarto.tipo }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <label>Data de entrada</label>
+            <input type="date" id="data_entrada">
+
+            <label>Data de saída</label>
+            <input type="date" id="data_saida">
+
+            <div class="botoes">
+                <button class="btn-cancelar" onclick="fecharModal()">Cancelar</button>
+                <button class="btn-guardar" onclick="guardarReserva()">Guardar Reserva</button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+        const isAdmin = {
+            {
+                'true'
+                if is_admin
+                else 'false'
+            }
+        };
+
+        let calendar;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'pt',
+                height: 'auto',
+
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,listMonth'
+                },
+
+                buttonText: {
+                    today: 'Hoje',
+                    month: 'Mês',
+                    week: 'Semana',
+                    list: 'Lista'
+                },
+
+                events: "{{ url_for('api_reservas') }}",
+
+                dateClick: function(info) {
+                    if (!isAdmin) {
+                        return;
+                    }
+
+                    abrirModal(info.dateStr);
+                },
+
+                eventClick: function(info) {
+                    if (info.event.url) {
+                        info.jsEvent.preventDefault();
+                        window.location.href = info.event.url;
+                    }
+                },
+
+                eventDidMount: function(info) {
+                    info.el.title =
+                        "Cliente: " + info.event.extendedProps.cliente +
+                        "\nQuarto: " + info.event.extendedProps.quarto +
+                        "\nTipo: " + info.event.extendedProps.tipo_quarto;
+                }
+            });
+
+            calendar.render();
+        });
+
+        function abrirModal(data) {
+            document.getElementById("data_entrada").value = data;
+
+            const saida = new Date(data);
+            saida.setDate(saida.getDate() + 1);
+
+            document.getElementById("data_saida").value = saida.toISOString().split("T")[0];
+
+            document.getElementById("modalReserva").style.display = "flex";
+        }
+
+        function fecharModal() {
+            document.getElementById("modalReserva").style.display = "none";
+        }
+
+        function guardarReserva() {
+            const dados = {
+                cliente_id: document.getElementById("cliente_id").value,
+                quarto_id: document.getElementById("quarto_id").value,
+                data_entrada: document.getElementById("data_entrada").value,
+                data_saida: document.getElementById("data_saida").value
+            };
+
+            fetch("{{ url_for('criar_reserva_calendario') }}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(dados)
+                })
+                .then(response => response.json().then(data => ({
+                    status: response.status,
+                    body: data
+                })))
+                .then(result => {
+                    if (result.status !== 200) {
+                        alert(result.body.erro || "Erro ao criar reserva.");
+                        return;
+                    }
+
+                    fecharModal();
+                    calendar.refetchEvents();
+                    alert("Reserva criada com sucesso!");
+                })
+                .catch(() => {
+                    alert("Erro de comunicação com o servidor.");
+                });
+        }
+    </script>
+
+</body>
+
+</html>

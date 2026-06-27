@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reservas - Hotel Python Palace</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav>
+        <h1>Reservas</h1>
+        <div>
+            <a href="{{ url_for('quartos') }}">Quartos</a>
+            <a href="{{ url_for('calendario') }}">Calendário</a>
+            <a href="{{ url_for('logout') }}">Sair</a>
+        </div>
+    </nav>
+
+    <main>
+
+        <h1 class="titulo">Criar Reserva</h1>
+
+        {% if erro %}
+        <p class="erro centro">{{ erro }}</p>
+        {% endif %}
+
+        <div class="form-box claro">
+
+            <form method="POST" action="{{ url_for('criar_reserva') }}">
+
+                <label>Quarto</label>
+                <select name="quarto_id" required>
+                    {% for quarto in quartos %}
+                    <option value="{{ quarto['id'] }}">
+                        {{ quarto['numero'] }} - {{ quarto['tipo'] }} - {{ "%.2f"|format(quarto['preco']) }} €
+                    </option>
+                    {% endfor %}
+                </select>
+
+                <label>Data de entrada</label>
+                <input type="date" name="data_entrada" required>
+
+                <label>Data de saída</label>
+                <input type="date" name="data_saida" required>
+
+                <button type="submit" class="btn">Confirmar Reserva</button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

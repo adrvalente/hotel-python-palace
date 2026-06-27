@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Python Palace</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="landing">
+
+    <div class="overlay">
+        <div class="hero">
+            <img src="{{ url_for('static', filename='img/logo_transp.png') }}" alt="Hotel Python Palace" class="logo-principal">
+            <h2>Gestão Inteligente de Hospitalidade</h2>
+
+            <p>
+                Experiência premium, conforto absoluto e reservas inteligentes.
+            </p>
+
+            <div class="botoes">
+                <a href="{{ url_for('login') }}" class="btn">Entrar</a>
+                <a href="{{ url_for('quartos') }}" class="btn btn-secundario">Ver Quartos</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

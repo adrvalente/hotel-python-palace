@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Hotel Python Palace</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="landing">
+
+    <div class="overlay">
+        <div class="form-box">
+
+            <h1>Login</h1>
+
+            {% if erro %}
+            <p class="erro">{{ erro }}</p>
+            {% endif %}
+
+            <form method="POST">
+                <input type="text" name="nome" placeholder="Nome" required>
+                <input type="password" name="nif" placeholder="NIF ou Password Admin" required>
+
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+
+            <a href="{{ url_for('landing') }}" class="link-voltar">Voltar</a>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

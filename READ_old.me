@@ -1,0 +1,400 @@
+# 🏨 Hotel Python Palace
+
+<p align="center">
+
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="55">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" width="55">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" width="55">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="55">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="55">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="55">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="55">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="55">
+
+</p>
+
+<p align="center">
+
+Sistema moderno de Gestão Hoteleira desenvolvido com Flask, SQLite e Java Swing.
+
+</p>
+
+---
+
+# 📌 Objetivo do Projeto
+
+O **Hotel Python Palace** é um sistema de gestão hoteleira inspirado em PMS (Property Management Systems) reais.
+
+O objetivo do projeto é desenvolver uma plataforma moderna capaz de gerir:
+
+- clientes
+- quartos
+- reservas
+- faturação
+- calendário de ocupação
+- exportação/importação Excel
+- autenticação
+- dashboard administrativo
+- aplicação desktop em Java Swing
+
+O projeto foi desenvolvido para aprendizagem, portfólio técnico e evolução académica/profissional.
+
+---
+
+# 🚀 Funcionalidades
+
+## 👤 Gestão de Clientes
+
+- adicionar clientes
+- editar clientes
+- remover clientes
+- validação automática de NIF
+- login de clientes
+
+---
+
+## 🛏️ Gestão de Quartos
+
+- quartos personalizados
+- preços diferentes
+- imagens
+- amenities
+- capacidade
+- tipos de cama
+- estados do quarto
+
+---
+
+## 📅 Reservas
+
+- criação de reservas
+- prevenção de conflitos
+- verificação de disponibilidade
+- validação de datas
+- reservas administrativas
+- reservas via calendário
+
+---
+
+## 🗓️ Calendário Inteligente
+
+- FullCalendar integrado
+- reservas por cor
+- quartos ocupados
+- datas livres
+- clique num dia para reservar
+- visualização mensal/semanal
+
+---
+
+## 🧾 Faturação
+
+- geração automática de faturas
+- cálculo de noites
+- cálculo do total
+- emissão por reserva
+
+---
+
+## 📤 Backup e Excel
+
+- exportação para Excel
+- importação de backups
+- recuperação rápida da base de dados
+
+---
+
+## 🔐 Segurança
+
+- sessões Flask
+- proteção de rotas
+- logout seguro
+- login protegido
+- password admin em hash
+
+---
+
+# 🛠️ Tecnologias Utilizadas
+
+| Tecnologia | Função |
+|---|---|
+| Python | Backend principal |
+| Flask | Framework Web |
+| SQLite | Base de dados |
+| Pandas | Exportação Excel |
+| OpenPyXL | Ficheiros XLSX |
+| HTML5 | Estrutura Frontend |
+| CSS3 | Estilo |
+| JavaScript | Interatividade |
+| FullCalendar | Calendário |
+| Java Swing | Aplicação Desktop |
+| JDBC SQLite | Ligação Java ↔ SQLite |
+
+---
+
+# 📂 Estrutura do Projeto
+
+```txt
+HotelPythonPalace/
+│
+├── app.py
+├── DatabaseManager.py
+├── hotel.db
+├── requirements.txt
+│
+├── static/
+│   ├── css/
+│   ├── img/
+│   └── ico/
+│
+├── templates/
+│   ├── landing.html
+│   ├── login.html
+│   ├── dashboard.html
+│   ├── quartos.html
+│   ├── reservas.html
+│   ├── calendario.html
+│   ├── fatura.html
+│   ├── 404.html
+│   ├── 500.html
+│   └── erro_login.html
+│
+├── swing/
+│   ├── HotelPythonPalaceDashboard.java
+│   ├── Database.java
+│   ├── QuartosFrame.java
+│   ├── ClientesFrame.java
+│   ├── ReservasFrame.java
+│   ├── FaturasFrame.java
+│   ├── CalendarioFrame.java
+│   ├── ExcelUtils.java
+│   ├── executar_dashboard.bat
+│   └── lib/
+│       └── sqlite-jdbc.jar
+│
+├── screenshots/
+│
+└── README.md
+```
+
+---
+
+# 🗄️ Base de Dados
+
+O sistema utiliza:
+
+```txt
+hotel.db
+```
+
+## Estrutura Principal
+
+### clientes
+
+```sql
+id
+nome
+nif
+contacto
+email
+```
+
+### quartos
+
+```sql
+id
+numero
+tipo
+preco
+estado
+capacidade
+camas
+descricao
+amenities
+imagem
+```
+
+### reservas
+
+```sql
+id
+cliente_id
+quarto_id
+data_entrada
+data_saida
+estado
+observacoes
+```
+
+### faturas
+
+```sql
+id
+reserva_id
+valor
+data_emissao
+estado
+```
+
+### utilizadores
+
+```sql
+id
+username
+password_hash
+tipo
+```
+
+---
+
+# ⚙️ Instalação
+
+## 1. Clonar o projeto
+
+```bash
+git clone https://github.com/SEU_USERNAME/hotel-python-palace.git
+```
+
+---
+
+## 2. Entrar na pasta
+
+```bash
+cd hotel-python-palace
+```
+
+---
+
+## 3. Criar ambiente virtual
+
+### Windows
+
+```powershell
+python -m venv venv
+venv\Scripts\activate
+```
+
+### Linux
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+---
+
+## 4. Instalar dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# ▶️ Executar Aplicação Flask
+
+```bash
+python app.py
+```
+
+Abrir:
+
+```txt
+http://127.0.0.1:5000
+```
+
+---
+
+# 💻 Executar Aplicação Java Swing
+
+Entrar na pasta:
+
+```txt
+swing/
+```
+
+Executar:
+
+```txt
+executar_dashboard.bat
+```
+
+ou:
+
+```bash
+javac -cp ".;lib/sqlite-jdbc.jar" *.java
+
+java -cp ".;lib/sqlite-jdbc.jar" HotelPythonPalaceDashboard
+```
+
+---
+
+# 🔑 Login
+
+## Admin
+
+```txt
+Utilizador: admin
+Password: 202605
+```
+
+---
+
+# 📸 Screenshots
+
+## Landing Page
+
+```md
+![Landing](screenshots/landing.png)
+```
+
+---
+
+## Dashboard
+
+```md
+![Dashboard](screenshots/dashboard.png)
+```
+
+---
+
+## Calendário
+
+```md
+![Calendário](screenshots/calendario.png)
+```
+
+---
+
+## Quartos
+
+```md
+![Quartos](screenshots/quartos.png)
+```
+
+---
+
+# 📈 Melhorias Futuras
+
+- notificações automáticas
+- emails automáticos
+- pagamentos online
+- relatórios PDF
+- multiutilizador
+- API REST
+- aplicação mobile
+- estatísticas avançadas
+- integração Booking/Airbnb
+- dark mode
+
+---
+
+# 👨‍💻 Autor
+
+Desenvolvido por **Adriano Valente**
+
+---
+
+# 📄 Licença
+
+Projeto desenvolvido para fins académicos, aprendizagem e portfólio.

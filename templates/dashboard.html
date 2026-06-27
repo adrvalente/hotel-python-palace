@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Hotel Python Palace</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav>
+        <h1>Dashboard Admin</h1>
+        <div>
+            <a href="{{ url_for('calendario') }}">Calendário</a>
+            <a href="{{ url_for('reservas') }}">Reservas</a>
+            <a href="{{ url_for('quartos') }}">Quartos</a>
+            <a href="{{ url_for('logout') }}">Sair</a>
+        </div>
+    </nav>
+
+    <main>
+
+        <h1 class="titulo">Painel Administrativo</h1>
+
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <h2>{{ total_clientes }}</h2>
+                <p>Clientes</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>{{ total_quartos }}</h2>
+                <p>Quartos</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>{{ total_reservas }}</h2>
+                <p>Reservas</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>{{ "%.2f"|format(total_faturacao) }} €</h2>
+                <p>Faturação</p>
+            </div>
+        </div>
+
+        <h2 class="titulo">Backup da Base de Dados</h2>
+
+        <div class="form-box claro">
+            <a href="{{ url_for('exportar_excel') }}" class="btn">
+                Exportar Base de Dados para Excel
+            </a>
+
+            <hr style="margin: 25px 0;">
+
+            <form method="POST" action="{{ url_for('importar_excel') }}" enctype="multipart/form-data">
+
+                <label>Importar ficheiro Excel</label>
+
+                <input type="file" name="ficheiro_excel" accept=".xlsx" required>
+
+                <button type="submit" class="btn">
+                    Importar Excel
+                </button>
+            </form>
+        </div>
+
+        <h2 class="titulo">Adicionar Quarto</h2>
+
+        <div class="form-box claro">
+            <form method="POST" action="{{ url_for('adicionar_quarto') }}">
+                <input name="numero" placeholder="Número do quarto" required>
+                <input name="tipo" placeholder="Tipo de quarto" required>
+                <input name="preco" type="number" step="0.01" placeholder="Preço por noite" required>
+                <input name="capacidade" type="number" placeholder="Capacidade" required>
+                <input name="camas" placeholder="Camas" required>
+                <input name="descricao" placeholder="Descrição">
+                <input name="amenities" placeholder="Amenities">
+                <input name="imagem" placeholder="Imagem. Ex: standard.jpg">
+
+                <button class="btn" type="submit">Adicionar Quarto</button>
+            </form>
+        </div>
+
+        <h2 class="titulo">Editar Quartos</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Tipo</th>
+                    <th>Preço</th>
+                    <th>Capacidade</th>
+                    <th>Camas</th>
+                    <th>Descrição</th>
+                    <th>Amenities</th>
+                    <th>Imagem</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for quarto in quartos %}
+                <tr>
+                    <form method="POST" action="{{ url_for('editar_quarto', id=quarto['id']) }}">
+                        <td><input name="numero" value="{{ quarto['numero'] }}"></td>
+                        <td><input name="tipo" value="{{ quarto['tipo'] }}"></td>
+                        <td><input name="preco" type="number" step="0.01" value="{{ quarto['preco'] }}"></td>
+                        <td><input name="capacidade" type="number" value="{{ quarto['capacidade'] }}"></td>
+                        <td><input name="camas" value="{{ quarto['camas'] }}"></td>
+                        <td><input name="descricao" value="{{ quarto['descricao'] }}"></td>
+                        <td><input name="amenities" value="{{ quarto['amenities'] }}"></td>
+                        <td><input name="imagem" value="{{ quarto['imagem'] }}"></td>
+                        <td>
+                            <button type="submit" class="btn pequeno">Guardar</button>
+                            <a class="btn-remover" href="{{ url_for('remover_quarto', id=quarto['id']) }}">Remover</a>
+                        </td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2 class="titulo">Adicionar Cliente</h2>
+
+        <div class="form-box claro">
+            <form method="POST" action="{{ url_for('adicionar_cliente') }}">
+                <input name="nome" placeholder="Nome do cliente" required>
+                <input name="nif" placeholder="NIF" required>
+
+                <button class="btn" type="submit">Adicionar Cliente</button>
+            </form>
+        </div>
+
+        <h2 class="titulo">Editar Clientes</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>NIF</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <form method="POST" action="{{ url_for('editar_cliente', id=cliente['id']) }}">
+                        <td><input name="nome" value="{{ cliente['nome'] }}"></td>
+                        <td><input name="nif" value="{{ cliente['nif'] }}"></td>
+                        <td>
+                            <button type="submit" class="btn pequeno">Guardar</button>
+                            <a class="btn-remover" href="{{ url_for('remover_cliente', id=cliente['id']) }}">Remover</a>
+                        </td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2 class="titulo">Adicionar Reserva</h2>
+
+        <div class="form-box claro">
+            <form method="POST" action="{{ url_for('adicionar_reserva_admin') }}">
+
+                <label>Cliente</label>
+                <select name="cliente_id" required>
+                    {% for cliente in clientes %}
+                    <option value="{{ cliente['id'] }}">
+                        {{ cliente['nome'] }} - {{ cliente['nif'] }}
+                    </option>
+                    {% endfor %}
+                </select>
+
+                <label>Quarto</label>
+                <select name="quarto_id" required>
+                    {% for quarto in quartos %}
+                    <option value="{{ quarto['id'] }}">
+                        {{ quarto['numero'] }} - {{ quarto['tipo'] }} - {{ "%.2f"|format(quarto['preco']) }} €
+                    </option>
+                    {% endfor %}
+                </select>
+
+                <label>Entrada</label>
+                <input type="date" name="data_entrada" required>
+
+                <label>Saída</label>
+                <input type="date" name="data_saida" required>
+
+                <button class="btn" type="submit">Adicionar Reserva</button>
+            </form>
+        </div>
+
+        <h2 class="titulo">Editar Reservas</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Quarto</th>
+                    <th>Entrada</th>
+                    <th>Saída</th>
+                    <th>Estado</th>
+                    <th>Fatura</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for reserva in reservas %}
+                <tr>
+                    <form method="POST" action="{{ url_for('editar_reserva', id=reserva['id']) }}">
+
+                        <td>
+                            <select name="cliente_id">
+                                {% for cliente in clientes %}
+                                <option value="{{ cliente['id'] }}"
+                                    {% if cliente['id'] == reserva['cliente_id'] %}selected{% endif %}>
+                                    {{ cliente['nome'] }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </td>
+
+                        <td>
+                            <select name="quarto_id">
+                                {% for quarto in quartos %}
+                                <option value="{{ quarto['id'] }}"
+                                    {% if quarto['id'] == reserva['quarto_id'] %}selected{% endif %}>
+                                    {{ quarto['numero'] }} - {{ quarto['tipo'] }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </td>
+
+                        <td>
+                            <input type="date" name="data_entrada" value="{{ reserva['data_entrada'] }}">
+                        </td>
+
+                        <td>
+                            <input type="date" name="data_saida" value="{{ reserva['data_saida'] }}">
+                        </td>
+
+                        <td>
+                            <select name="estado">
+                                <option value="Ativa" {% if reserva['estado'] == 'Ativa' %}selected{% endif %}>Ativa</option>
+                                <option value="Cancelada" {% if reserva['estado'] == 'Cancelada' %}selected{% endif %}>Cancelada</option>
+                                <option value="Concluída" {% if reserva['estado'] == 'Concluída' %}selected{% endif %}>Concluída</option>
+                            </select>
+                        </td>
+
+                        <td>
+                            <a href="{{ url_for('fatura', reserva_id=reserva['id']) }}">Ver</a>
+                        </td>
+
+                        <td>
+                            <button type="submit" class="btn pequeno">Guardar</button>
+                            <a class="btn-remover" href="{{ url_for('remover_reserva', id=reserva['id']) }}">Remover</a>
+                        </td>
+
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </main>
+
+</body>
+
+</html>

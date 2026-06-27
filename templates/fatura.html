@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fatura - Hotel Python Palace</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <main class="fatura">
+
+        <h1>Hotel Python Palace</h1>
+        <h2>Fatura</h2>
+
+        <hr>
+
+        <p><strong>Data de emissão:</strong> {{ data_emissao }}</p>
+
+        <h3>Cliente</h3>
+        <p><strong>Nome:</strong> {{ reserva['nome'] }}</p>
+        <p><strong>NIF:</strong> {{ reserva['nif'] }}</p>
+
+        <h3>Reserva</h3>
+        <p><strong>Reserva Nº:</strong> {{ reserva['id'] }}</p>
+        <p><strong>Quarto:</strong> {{ reserva['numero'] }} - {{ reserva['tipo'] }}</p>
+        <p><strong>Entrada:</strong> {{ reserva['data_entrada'] }}</p>
+        <p><strong>Saída:</strong> {{ reserva['data_saida'] }}</p>
+        <p><strong>Noites:</strong> {{ noites }}</p>
+        <p><strong>Preço por noite:</strong> {{ "%.2f"|format(reserva['preco']) }} €</p>
+
+        <hr>
+
+        <h2>Total: {{ "%.2f"|format(total) }} €</h2>
+
+        <div class="botoes">
+            <button onclick="window.print()" class="btn">Imprimir</button>
+            <a href="{{ url_for('calendario') }}" class="btn btn-secundario">Voltar</a>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,438 @@
+# 🏨 Hotel Python Palace
+
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![Flask](https://img.shields.io/badge/Flask-Web_App-black?logo=flask)
+![SQLite](https://img.shields.io/badge/SQLite-Database-blue?logo=sqlite)
+![HTML5](https://img.shields.io/badge/HTML5-Frontend-orange?logo=html5)
+![CSS3](https://img.shields.io/badge/CSS3-Styling-blue?logo=css3)
+![JavaScript](https://img.shields.io/badge/JavaScript-Interactive-yellow?logo=javascript)
+![Java](https://img.shields.io/badge/Java-Dashboard-red?logo=openjdk)
+![GitHub](https://img.shields.io/badge/GitHub-Version_Control-black?logo=github)
+
+---
+
+# 📖 Descrição
+
+O **Hotel Python Palace** é uma aplicação de gestão hoteleira desenvolvida em **Python (Flask)** com base de dados **SQLite**.
+
+O sistema permite gerir:
+
+- Clientes
+- Quartos
+- Reservas
+- Calendário de ocupação
+- Faturas
+- Dashboard administrativo
+
+O objetivo é disponibilizar uma solução simples, intuitiva e eficiente para a gestão de pequenas unidades hoteleiras.
+
+---
+
+# 🚀 Funcionalidades
+
+## 👤 Gestão de Clientes
+
+- Registo de clientes
+- Edição de clientes
+- Remoção de clientes
+- Pesquisa de clientes
+
+---
+
+## 🛏️ Gestão de Quartos
+
+- Adicionar quartos
+- Editar quartos
+- Remover quartos
+- Definir preço por noite
+- Definir capacidade
+- Definir comodidades
+- Imagens ilustrativas dos quartos
+
+---
+
+## 📅 Gestão de Reservas
+
+- Criar reservas
+- Editar reservas
+- Cancelar reservas
+- Validação automática de datas
+- Associação entre cliente e quarto
+
+---
+
+## 🗓️ Calendário
+
+- Vista mensal
+- Vista semanal
+- Quartos ocupados
+- Reservas por cor
+- Clique direto no dia para criar reserva
+- Visualização rápida da ocupação
+
+---
+
+## 🧾 Faturação
+
+- Emissão de faturas
+- Cálculo automático
+- Exportação para PDF
+- Histórico de faturação
+
+---
+
+## 🔐 Sistema de Login
+
+### Cliente
+
+Validação através de:
+
+- Nome
+- NIF
+
+---
+
+### Administrador
+
+Utilizador:
+
+```text
+admin
+```
+
+Palavra-passe:
+
+```text
+202605
+```
+
+Acesso exclusivo ao Dashboard Administrativo.
+
+---
+
+## 📊 Dashboard
+
+Indicadores em tempo real:
+
+- Total de quartos
+- Total de clientes
+- Total de reservas
+- Receita estimada
+- Taxa de ocupação
+
+---
+
+## 📥 Importação e Exportação
+
+### Exportar
+
+- Base de dados para Excel (.xlsx)
+- Calendário de reservas para Excel
+
+### Importar
+
+- Restaurar dados através de ficheiros Excel
+
+---
+
+# 🏗️ Tecnologias Utilizadas
+
+| Tecnologia | Função               |
+|------------|----------------------|
+| Python     | Backend              |
+| Flask      | Framework Web        |
+| SQLite     | Base de Dados        |
+| HTML5      | Estrutura            |
+| CSS3       | Estilo               |
+| JavaScript | Interatividade       |
+| Bootstrap  | Interface            |
+| OpenPyXL   | Exportação Excel     |
+| ReportLab  | PDFs                 |
+| Java Swing | Dashboard Desktop    |
+
+---
+
+# 📂 Estrutura do Projeto
+
+```text
+HPP_PMS_SaaS/
+HotelPythonPalace/
+│
+├── app.py
+├── DatabaseManager.py
+├── Database.java
+├── ExcelUtils.java
+│
+├── HotelPythonPalaceDashboard.java
+├── QuartosFrame.java
+├── ClientesFrame.java
+├── ReservasFrame.java
+├── FaturasFrame.java
+├── CalendarioFrame.java
+│
+├── requirements.txt
+├── README.md
+├── hotel.ico
+│
+├── database/
+│   ├── hotel.db
+│   └── hotel_backup.db
+│
+├── lib/
+│   └── sqlite-jdbc.jar
+│
+├── templates/
+│   ├── landing.html
+│   ├── login.html
+│   ├── quartos.html
+│   ├── reservas.html
+│   ├── calendario.html
+│   ├── fatura.html
+│   ├── dashboard.html
+│   ├── erro_login.html
+│   ├── 404.html
+│   └── 500.html
+│
+├── static/
+│   │
+│   ├── css/
+│   │   └── style.css
+│   │
+│   ├── js/
+│   │   └── calendario.js
+│   │
+│   ├── ico/
+│   │   ├── favicon.ico
+│   │   └── hotel.ico
+│   │
+│   └── img/
+│       ├── logo_transp.png
+│       ├── wallpaper.jpg
+│       ├── hotel.png
+│       ├── standard.jpg
+│       ├── twin.jpg
+│       ├── suite.jpg
+│       ├── quarto_familiar.jpg
+│       │
+│       ├── android-chrome-192x192.png
+│       ├── android-chrome-512x512.png
+│       ├── apple-touch-icon.png
+│       ├── favicon-16x16.png
+│       └── favicon-32x32.png
+│
+├── scripts/
+│   ├── menu_hotel.bat
+│   ├── inicializar.bat
+│   ├── executar_dashboard.bat
+│   └── Criar_Atalho.ps1
+│
+├── docs/
+│   ├── screenshots/
+│   ├── arquitetura.png
+│   ├── fluxograma.png
+│   └── manual_utilizador.pdf
+│
+└── .gitignore
+```
+
+---
+
+# ⚙️ Instalação
+
+## 1. Clonar o projeto
+
+```bash
+git clone https://github.com/SEU_UTILIZADOR/HPP_PMS_SaaS.git
+```
+
+---
+
+## 2. Entrar na pasta
+
+```bash
+cd HPP_PMS_SaaS
+```
+
+---
+
+## 3. Criar ambiente virtual
+
+### Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+### Linux
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+---
+
+## 4. Instalar dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# ▶️ Executar o Projeto
+
+```bash
+python app.py
+```
+
+Abrir no navegador:
+
+```text
+http://127.0.0.1:5000
+```
+
+---
+
+# 📸 Screenshots
+
+## Landing Page
+
+```text
+Adicionar screenshot aqui
+```
+
+---
+
+## Login
+
+```text
+Adicionar screenshot aqui
+```
+
+---
+
+## Quartos
+
+```text
+Adicionar screenshot aqui
+```
+
+---
+
+## Reservas
+
+```text
+Adicionar screenshot aqui
+```
+
+---
+
+## Calendário
+
+```text
+Adicionar screenshot aqui
+```
+
+---
+
+## Dashboard
+
+```text
+Adicionar screenshot aqui
+```
+
+---
+
+# 🗄️ Base de Dados
+
+Base de dados:
+
+```text
+hotel.db
+```
+
+Principais tabelas:
+
+### clientes
+
+- id
+- nome
+- nif
+- email
+- telefone
+
+### quartos
+
+- id
+- numero
+- tipo
+- preco
+- capacidade
+
+### reservas
+
+- id
+- cliente_id
+- quarto_id
+- data_entrada
+- data_saida
+
+### faturas
+
+- id
+- reserva_id
+- valor
+- data
+
+---
+
+# 🔒 Segurança
+
+- Proteção por sessão
+- Rotas privadas
+- Login obrigatório
+- Logout seguro
+- Controlo de acesso administrativo
+
+---
+
+# 🎯 Melhorias Futuras
+
+- Pagamentos online
+- Envio automático de emails
+- Check-in digital
+- Check-out digital
+- Dashboard avançado
+- API REST
+- Aplicação Mobile
+- Integração Booking.com
+- Integração Airbnb
+
+---
+
+# 👨‍💻 Autor
+
+**Adriano <adrvalente> Valente**
+
+Projeto desenvolvido no âmbito de aprendizagem de:
+
+- Python
+- Flask
+- Bases de Dados
+- Desenvolvimento Web
+- Engenharia de Software
+
+---
+
+# 📄 Licença
+
+Este projeto é distribuído sob licença MIT.
+
+```
+MIT License
+Copyright (c) 2026 Adriano <adrvalene> Valente
+```
+
+⭐ Se gostaste do projeto, considera deixar uma estrela no GitHub.

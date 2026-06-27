@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quartos - Hotel Python Palace</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav>
+        <h1>Hotel Python Palace</h1>
+        <div>
+            <a href="{{ url_for('landing') }}">Início</a>
+            <a href="{{ url_for('login') }}">Login</a>
+        </div>
+    </nav>
+
+    <main>
+        <h1 class="titulo">Os Nossos Quartos</h1>
+
+        <div class="grid-quartos">
+
+            {% for quarto in quartos %}
+            <div class="card">
+
+                <img src="{{ url_for('static', filename='img/' + quarto['imagem']) }}" alt="{{ quarto['tipo'] }}">
+
+                <h2>{{ quarto['tipo'] }}</h2>
+
+                <p><strong>Número:</strong> {{ quarto['numero'] }}</p>
+                <p><strong>Preço:</strong> {{ "%.2f"|format(quarto['preco']) }} € / noite</p>
+                <p><strong>Capacidade:</strong> {{ quarto['capacidade'] }} pessoas</p>
+                <p><strong>Camas:</strong> {{ quarto['camas'] }}</p>
+                <p>{{ quarto['descricao'] }}</p>
+                <p><strong>Amenities:</strong> {{ quarto['amenities'] }}</p>
+
+                <a href="{{ url_for('reservas') }}" class="btn">Reservar</a>
+
+            </div>
+            {% endfor %}
+
+        </div>
+    </main>
+
+</body>
+
+</html>

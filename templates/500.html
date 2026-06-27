@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Erro interno</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #111827, #1f2937);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        
+        .box {
+            max-width: 650px;
+            padding: 40px;
+        }
+        
+        h1 {
+            font-size: 100px;
+            margin: 0;
+            color: #ef4444;
+        }
+        
+        h2 {
+            margin-top: 10px;
+            font-size: 32px;
+        }
+        
+        p {
+            color: #d1d5db;
+            font-size: 18px;
+        }
+        
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 24px;
+            background: #dc2626;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>500</h1>
+
+        <h2>Erro interno do servidor</h2>
+
+        <p>
+            Ocorreu um erro inesperado no Hotel Python Palace.
+            <br> Tenta novamente mais tarde.
+        </p>
+
+        <a href="{{ url_for('landing') }}">
+            Voltar ao início
+        </a>
+
+    </div>
+
+</body>
+
+</html>
